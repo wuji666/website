@@ -1,0 +1,117 @@
+{extend name='base' /}
+{block name='banner'}
+<div class="fullSlide fullSlide3" style="margin-top: 135px;">
+	<div class="bd">
+		<ul>
+			{foreach $banner as $v}
+			<li>
+				<img src="{$v.image}">
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="hd">
+		<ul>
+		</ul>
+	</div>
+	<a class="prev" href="javascript:void(0)"></a>
+	<a class="next" href="javascript:void(0)"></a>
+</div>
+{/block}
+{block name='main'}
+<div class="help-header2" style="margin:0px; padding:0px; height:40px;">
+	<div class="wrap clearfix" style="width:1200px;">
+		<div class="searchbox" style="padding:10px; top:0px;">
+			<div class="search" style="width:500px; float:left;">
+				<form action="{:url('question/index')}">
+					<input type="text" class="text" placeholder="输入搜索内容" id="txt_keyword" runat="server"
+					       style="width:300px;" name="title" value="{$title|default=''}">
+					<input type="submit" id="imgbtn_search" runat="server" class="submit" value="搜索">
+				</form>
+			</div>
+			<ul class="key-word" style="float:left;">
+				<!--				<li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001025&i=3&i1=9" title="交易数据抓取" target="_blank">交易数据抓取</a></li><li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001032&i=1&i1=3" title="视频讲解" target="_blank">视频讲解</a></li><li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001023&i=2&i1=7" title="机具划拨" target="_blank">机具划拨</a></li><li><a href="http://www.fenrunbao.cn/helpshow.aspx?bh=2143&i=1&i1=4" title="代理商可以开几级" target="_blank">代理商可以开几级</a></li><li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001021&i=1&i1=5" title="分润设置" target="_blank">分润设置</a></li>-->
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="wrap">
+	<div class="com-pro clearfix">
+		<div class="pro-l fl">
+			{foreach $question_nav as $v}
+			<a href="{:url('/index/question/index', ['id' => $v.id])}" class="pro-menu" title="{$v.name}"
+			   target="_blank">{$v.name}</a>
+			{/foreach}
+		</div>
+
+
+		<div class="pro-r fr">
+			<!--<p class="help-crumb">
+					<a href="https://www.fenrunbao.cn/qa.html">常见问题</a>
+					<span>&gt;</span>
+					<a href="https://www.fenrunbao.cn/qalist_JCSJ001015.html">分润设置</a>
+				</p>-->
+			<p class="hot-question-tit">{$details.title}</p>
+			{$details.content|raw}
+			<p class="kefu-tip">
+				如果没有解决您的问题，请立即
+				<a href="http://wpa.qq.com/msgrd?v=3&uin={$site_config.qq}&site=qq&menu=yes" target="_blank">联系客服</a>！
+			</p>
+			<div class="info-tip">
+				声明：文章"{$details.title}"为<a href="/">分润宝</a>原创文章，转载请注明出处,谢谢合作！
+			</div>
+			<div class="pageFy">
+				<p>
+					<strong>上一篇：</strong>
+					{if !empty($prev)}
+					<a href="{:url('/index/question/details', ['id' => $prev.id])}" title="{$prev.title}"
+					   target="_blank">{$prev.title}</a>
+					{else}
+					没有了
+					{/if}
+				</p>
+				<p>
+					<strong>下一篇：</strong>
+					{if !empty($next)}
+					<a href="{:url('/index/question/details', ['id' => $next.id])}" title="{$next.title}"
+					   target="_blank">{$next.title}</a>
+					{else}
+					没有了
+					{/if}
+				</p>
+			</div>
+
+			<div class="linksbox">
+				<div class="item fl">
+					<div class="help-list">
+						<h2><strong>热门问题</strong></h2>
+						<ul class="list-ul2">
+							{foreach $hot as $v}
+							<li>
+								<a href="{:url('/index/question/details',['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+
+				</div>
+				<div class="item fr">
+					<div class="help-list">
+						<h2><strong>最新资讯</strong></h2>
+						<ul class="list-ul2">
+							{foreach $new as $v}
+							<li>
+								<a href="{:url('/index/question/details',['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+{/block}

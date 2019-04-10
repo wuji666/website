@@ -1,0 +1,282 @@
+<div class="book-summary">
+	<div id="book-search-input">
+		<!--<form action="" method="get">
+			<input type="text" name="s" placeholder="搜索">
+			<input type="button" class="btn1">
+		</form>-->
+	</div>
+	<style>
+		.sa-logo {
+			background: url('/static/images/index/helplogo.png') no-repeat;
+			background-size: contain;
+			background-position: 16px center;
+			height: 48px;
+			width: 100%;
+			display: block;
+		}
+	</style>
+	<div class="logo">
+		<a href="/" class="sa-logo"></a>
+	</div>
+	<nav class="navbox">
+		<ul id="menu-menu-1" class="summary">
+			{foreach $left_menu as $v}
+			<li id="wzlist0" class="menu-item menu-item-type-post_type menu-item-object-post {if isset($v['children'])}menu-item-has-children{/if} menu-item-287 hidemenu">
+				<a href="{:url('/index/manual/index', ['id' => $v.id])}" title="{$v.name}" class="js_wxq_add" {if $id == $v.id}style="color:#e6591e;"{/if}>
+					{$v.name}
+					<i class="fa fa-caret-down"></i>
+				</a>
+				{if isset($v['children'])}
+				<ul class="sub-menu">
+					{foreach $v['children'] as $val}
+					<li id="wzlist3" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu">
+						<a href="{:url('/index/manual/index', ['id' => $val.id])}" title="{$val.name}" {if $id == $val.id}style="color:#e6591e;"{/if}>{$val.name}</a>
+					</li>
+					{/foreach}
+				</ul>
+				{/if}
+			</li>
+			{/foreach}
+			<!--<li id="wzlist8"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001479.html" title="分润设置" class="js_wxq_add">分润设置<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist9"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001511_show.html" title="激活返现政策设置">激活返现政策设置</a>
+					</li>
+					<li id="wzlist10"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001530_show.html" title="推广佣金设置">推广佣金设置</a></li>
+					<li id="wzlist11"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001532_show.html" title="等级设置">等级设置</a></li>
+					<li id="wzlist12"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001533_show.html" title="分润阶梯设置">分润阶梯设置</a></li>
+				</ul>
+			</li>
+			<li id="wzlist13"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001480.html" title="产品管理" class="js_wxq_add">产品管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist14"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001499_show.html"
+							title="如何上架发布新产品">如何上架发布新产品</a></li>
+					<li id="wzlist15"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001500_show.html" title="产品分销佣金设置">产品分销佣金设置</a>
+					</li>
+				</ul>
+			</li>
+			<li id="wzlist16"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001481.html" title="订单管理" class="js_wxq_add">订单管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist17"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001502_show.html" title="未支付订单处理">未支付订单处理</a>
+					</li>
+					<li id="wzlist18"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001505_show.html"
+							title="已支付订单发货管理">已支付订单发货管理</a></li>
+					<li id="wzlist19"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001506_show.html" title="发货下拨机具">发货下拨机具</a></li>
+					<li id="wzlist20"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001586_show.html" title="快递类别管理">快递类别管理</a></li>
+				</ul>
+			</li>
+			<li id="wzlist21"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001482.html" title="机具管理" class="js_wxq_add">机具管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist22"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001507_show.html" title="新增仓库/绑定所属团队">新增仓库/绑定所属团队</a>
+					</li>
+					<li id="wzlist23"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001510_show.html"
+							title="机具入库/批量入库">机具入库/批量入库</a></li>
+					<li id="wzlist24"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001513_show.html"
+							title="机具赠送设置有何用途">机具赠送设置有何用途</a></li>
+					<li id="wzlist25"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001514_show.html" title="机具划拨">机具划拨</a></li>
+					<li id="wzlist26"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001590_show.html" title="机具回收">机具回收</a></li>
+				</ul>
+			</li>
+			<li id="wzlist27"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001484.html" title="数据上传" class="js_wxq_add">数据上传<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist28"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001519_show.html" title="激活达标数据处理">激活达标数据处理</a>
+					</li>
+					<li id="wzlist29"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001520_show.html" title="交易数据上传多久会生成分润">交易数据上传多久会生成分润</a>
+					</li>
+					<li id="wzlist30"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001521_show.html" title="上传激活达标数据注意事项">上传激活达标数据注意事项</a>
+					</li>
+					<li id="wzlist31"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001522_show.html"
+							title="上传交易数据注意事项">上传交易数据注意事项</a></li>
+					<li id="wzlist32"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001523_show.html" title="Excel数字栏目如何进行分列处理">Excel数字栏目如何进行分列处理</a>
+					</li>
+					<li id="wzlist33"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001593_show.html"
+							title="海科激活达标数据上传">海科激活达标数据上传</a></li>
+					<li id="wzlist34"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001594_show.html" title="点佰趣激活达标数据上传">点佰趣激活达标数据上传</a>
+					</li>
+					<li id="wzlist35"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001595_show.html"
+							title="点佰趣交易数据上传">点佰趣交易数据上传</a></li>
+				</ul>
+			</li>
+			<li id="wzlist36"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001486.html" title="提现管理" class="js_wxq_add">提现管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist37"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001525_show.html"
+							title="提现手续费/税点设置">提现手续费/税点设置</a></li>
+					<li id="wzlist38"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001592_show.html"
+							title="如何修改结算卡信息">如何修改结算卡信息</a></li>
+					<li id="wzlist39"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001585_show.html" title="提现审核结算方式">提现审核结算方式</a>
+					</li>
+					<li id="wzlist40"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001589_show.html" title="提现异常如何处理">提现异常如何处理</a>
+					</li>
+					<li id="wzlist41"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001597_show.html" title="提现申请处理流程">提现申请处理流程</a>
+					</li>
+				</ul>
+			</li>
+			<li id="wzlist42"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001487.html" title="财务管理" class="js_wxq_add">财务管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist43"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001524_show.html" title="收支余额统计汇总">收支余额统计汇总</a>
+					</li>
+					<li id="wzlist44"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001526_show.html" title="开户行管理">开户行管理</a></li>
+					<li id="wzlist45"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001527_show.html" title="手动加/扣款管理">手动加/扣款管理</a>
+					</li>
+					<li id="wzlist46"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001534_show.html" title="收支明细查询">收支明细查询</a></li>
+				</ul>
+			</li>
+			<li id="wzlist47"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001488.html" title="进件管理" class="js_wxq_add">进件管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist48"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001535_show.html" title="大POS进件">大POS进件</a></li>
+					<li id="wzlist49"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001536_show.html" title="商户进件审核">商户进件审核</a></li>
+				</ul>
+			</li>
+			<li id="wzlist50"
+			    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-287 hidemenu"><a
+					href="https://www.fenrunbao.cn/help/JCSJ001591_show.html" title="绑定提醒设置">绑定提醒设置</a></li>
+			<li id="wzlist51"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001490.html" title="资讯管理" class="js_wxq_add">资讯管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist52"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001550_show.html" title="代理通知公告管理">代理通知公告管理</a>
+					</li>
+					<li id="wzlist53"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001551_show.html" title="在线客服信息配置">在线客服信息配置</a>
+					</li>
+					<li id="wzlist54"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001553_show.html" title="联盟学院类别设置">联盟学院类别设置</a>
+					</li>
+					<li id="wzlist55"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001554_show.html" title="联盟学院资讯管理">联盟学院资讯管理</a>
+					</li>
+					<li id="wzlist56"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001588_show.html" title="广告图片链接管理">广告图片链接管理</a>
+					</li>
+				</ul>
+			</li>
+			<li id="wzlist57"
+			    class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-74 hidemenu">
+				<a href="https://www.fenrunbao.cn/help/JCSJ001491.html" title="操作员管理" class="js_wxq_add">操作员管理<i
+						class="fa fa-caret-down"></i></a>
+				<ul class="sub-menu">
+					<li id="wzlist58"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001558_show.html" title="用户管理">用户管理</a></li>
+					<li id="wzlist59"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001559_show.html" title="角色管理">角色管理</a></li>
+					<li id="wzlist60"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001560_show.html" title="一级菜单">一级菜单</a></li>
+					<li id="wzlist61"
+					    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-468 hidemenu"><a
+							href="https://www.fenrunbao.cn/help/JCSJ001561_show.html" title="二级菜单">二级菜单</a></li>
+				</ul>
+			</li>
+			<li id="wzlist62"
+			    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-294 hidemenu"><a
+					href="https://www.fenrunbao.cn/help/qa.html">常见问题</a></li>
+			<li id="wzlist63"
+			    class="menu-item menu-item-type-post_type menu-item-object-post menu-item-293 hidemenu"><a
+					href="https://www.fenrunbao.cn/help/uplog.html">更新日志</a></li>-->
+		</ul>
+	</nav>
+	<div class="f_bq">
+		<a class="gitbook-link" target="_blank" href="/">分润宝官网</a>
+		<a class="gitbook-link" target="_blank" href="{:url('/index/contact/index')}">在线客服</a>
+	</div>
+</div>

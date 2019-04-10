@@ -1,0 +1,67 @@
+{extend name='base' /}
+{block name='main'}
+<div class="contactBanner">
+	<img src="{$banner.image}" />
+</div>
+<div class="contPageCont">
+	<div class="contactInfo">
+		<div class="tit">
+			<h3>联系方式</h3>
+			<span>欢迎来电咨询，我们竭诚为您服务</span>
+		</div>
+		<div class="mainbox clearfix">
+			<div class="text">
+				<span>{$site_config.company}</span>
+				<ul>
+					<li><img src="__IMAGES__/index/0116_icon1.png" />电话：{$site_config.phone}</li>
+					<li><img src="__IMAGES__/index/0116_icon2.png" />QQ：{$site_config.qq}</li>
+					<li><img src="__IMAGES__/index/0116_icon3.png" />地址：{$site_config.address}</li>
+				</ul>
+			</div>
+			<div class="erwima">
+				<div class="clearfix">
+					<ul class="fr clearfix">
+						<li>
+							<img src="{$site_config.wechat}" alt="分润宝" />
+							<span>24小时微信客服</span>
+						</li>
+						<li>
+							<img src="{$site_config.wechat}" alt="分润宝" />
+							<span>分润宝公众号</span>
+						</li>
+					</ul>
+					<div class="linksmod fl">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin={$site_config.qq}&site=qq&menu=yes" target="_blank" class="qq">
+							<img src="__IMAGES__/index/0121_img1.gif" />
+						</a>
+						<a href="tel://{$site_config.phone}" class="tel">
+							<img src="__IMAGES__/index/0121_img2.gif" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="index-prosection index_crux contactPro">
+		<div class="wrap">
+			<div class="tit">
+				<h3>常见问题</h3>
+				<span>客户至上，品质为量</span>
+			</div>
+			<div class="list">
+				<ul class="clearfix">
+					{foreach $question as $v}
+					<li>
+						<div class="item">
+							<span class="num sec">Q</span>
+							<h5>{$v.title}</h5>
+							{$v.content|raw}
+						</div>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

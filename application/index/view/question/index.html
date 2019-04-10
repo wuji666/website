@@ -1,0 +1,103 @@
+{extend name='base' /}
+{block name='banner'}
+<div class="fullSlide fullSlide3" style="margin-top: 135px;">
+	<div class="bd">
+		<ul>
+			{foreach $banner as $v}
+			<li>
+				<img src="{$v.image}">
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="hd">
+		<ul>
+		</ul>
+	</div>
+	<a class="prev" href="javascript:void(0)"></a>
+	<a class="next" href="javascript:void(0)"></a>
+</div>
+{/block}
+{block name='main'}
+<div class="help-header2" style="margin:0px; padding:0px; height:60px;">
+	<div class="wrap clearfix" style="width:1200px;">
+		<div class="searchbox" style="padding:10px; top:0px;">
+			<div class="search" style="width:500px; float:left;">
+				<form action="{:url('question/index')}">
+					<input type="text" class="text" placeholder="输入搜索内容" id="txt_keyword" runat="server"
+					       style="width:300px;" name="title" value="{$title|default=''}">
+					<input type="submit" id="imgbtn_search" runat="server" class="submit" value="搜索">
+				</form>
+			</div>
+			<!--<ul class="key-word" style="float:left;">
+				<li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001023&i=2&i1=7" title="机具划拨"
+				       target="_blank">机具划拨</a></li>
+				<li><a href="http://www.fenrunbao.cn/helpshow.aspx?bh=2143&i=1&i1=4" title="代理商可以开几级" target="_blank">代理商可以开几级</a>
+				</li>
+				<li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001021&i=1&i1=5" title="分润设置"
+				       target="_blank">分润设置</a></li>
+				<li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001025&i=3&i1=9" title="交易数据抓取"
+				       target="_blank">交易数据抓取</a></li>
+				<li><a href="http://www.fenrunbao.cn/helplist.aspx?smalltype=JCSJ001032&i=1&i1=3" title="视频讲解"
+				       target="_blank">视频讲解</a></li>
+			</ul>-->
+		</div>
+	</div>
+</div>
+<div class="wrap" style=" margin-top:40px;">
+	<div class="com-pro clearfix">
+		<div class="pro-l fl">
+			{foreach $question_nav as $v}
+			<a href="{:url('/index/question/index', ['id' => $v.id])}" class="pro-menu" title="{$v.name}"
+			   target="_blank">{$v.name}</a>
+			{/foreach}
+		</div>
+		<div class="pro-r fr clearfix">
+			<div class="ct-box">
+				<div class="help-list">
+					<h2>
+						<strong>
+							<p class="help-crumb"><a href="{:url('/index/question/index')}">常见问题</a></p>
+						</strong>
+					</h2>
+					<ul class="list-ul">
+						{foreach $list as $v}
+						<li>
+							<a href="{:url('/index/question/details', ['id' => $v.id])}" target="_blank">{$v.title}</a>
+						</li>
+						{/foreach}
+					</ul>
+					<div class="page" style="padding-top:10px;">
+						<!--<div class="nextPages mt10">
+							<a href="javascript:;" class="linkOn">1</a><a href="qa-2.html">2</a><a
+								href="qa-3.html">3</a><a href="qa-4.html">4</a><a href="qa-5.html">5</a><a
+								href="qa-6.html">6</a><a href="qa-7.html">7</a><a href="qa-8.html">8</a><a
+								href="qa-9.html">9</a><a class="next" href="qa-2.html">>></a></div>
+					</div>-->
+						{$list|raw}
+					</div>
+				</div>
+				<div class="s_d_right">
+					<div class="right_c">
+						<a href="{:url('/index/contact/index')}" target="_blank" class="kefu-link"></a>
+						<div class="other">
+							<div class="line"></div>
+							<h4>热门问题</h4>
+							<div class="other_c">
+								<ul class="pro-list">
+									{foreach $hot_question as $v}
+									<li>
+										<a href="{:url('/index/question/details', ['id' => $v.id])}" title="{$v.title}"
+										   target="_blank">{$v.title}</a>
+									</li>
+									{/foreach}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

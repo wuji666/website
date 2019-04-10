@@ -1,0 +1,90 @@
+{extend name='base' /}
+{block name='main'}
+<div class="solution_detail clearfix" style="padding-top:120px; margin-top:10px;">
+	<div class="s_d_con">
+		<div class="s_d_left">
+			<div class="left_top">
+				<h4>{$video.title}</h4>
+			</div>
+			<div class="article-info-share clearfix" style="display:none;">
+				<div class="article-info">
+					<span class="time">{$video.create_time}</span>
+					<span class="view-count">184</span>
+				</div>
+			</div>
+			<div class="left_c">
+				<div class="summery">
+				</div>
+				<div class="summarize">
+					{$video.content|raw}
+				</div>
+				<div class="left_two">
+					<p class="kefu-tip">如果没有解决您的问题，请立即
+						<a href="http://wpa.qq.com/msgrd?v=3&uin={$site_config.qq}&site=qq&menu=yes" target="_blank">联系客服</a>！
+					</p>
+				</div>
+				<div class="statement_top">
+					<p>声明：文章"{$video.title}"为<a href="/">分润宝</a>原创文章，转载请注明出处,谢谢合作！</p>
+				</div>
+			</div>
+		</div>
+		<div class="s_d_right">
+			<div class="right_c">
+				<a href="https://www.fenrunbao.cn/contactus.html" target="_blank" class="kefu-link"></a>
+				<div class="other">
+					<div class="line"></div>
+					<h4>分润宝系统</h4>
+					<div class="other_c">
+						<ul class="pro-list2">
+							<li><a href="#">星驿付分润系统</a></li>
+							<li><a href="#">激活返现系统</a></li>
+							<li><a href="#">信用卡积分兑换</a></li>
+							<li><a href="#">拉卡拉分润系统</a></li>
+							<li><a href="#">合伙人分润系统</a></li>
+							<li><a href="#">网申办卡系统</a></li>
+							<li><a href="#">分销订单系统</a></li>
+							<li><a href="#">积分商家联盟</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="other">
+					<div class="line"></div>
+					<h4>热门问题</h4>
+					<div class="other_c">
+						<ul class="pro-list">
+							{foreach $hot_1 as $v}
+							<li>
+								<a href="{:url('/index/question/details', ['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="statement clearfix">
+	<div class="hot_questions">
+		<h4><strong>热门问题</strong></h4>
+		<ul>
+			{foreach $hot_2 as $v}
+			<li>
+				<a href="{:url('/index/question/details',['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="latest_information">
+		<h4><strong>最新资讯</strong></h4>
+		<ul>
+			{foreach $new as $v}
+			<li>
+				<a href="{:url('/index/question/details',['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+</div>
+{/block}

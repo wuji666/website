@@ -1,0 +1,105 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+	<!--tab标签-->
+	<div class="layui-tab layui-tab-brief">
+		<ul class="layui-tab-title">
+			<li class=""><a href="{:url('admin/product/index')}">文章管理</a></li>
+			<li class=""><a href="{:url('admin/product/add')}">添加文章</a></li>
+			<li class="layui-this">编辑文章</li>
+		</ul>
+		<div class="layui-tab-content">
+			<div class="layui-tab-item layui-show">
+				<form class="layui-form form-container" action="{:url('admin/product/update')}" method="post">
+					<div class="layui-form-item">
+						<label class="layui-form-label">产品名称</label>
+						<div class="layui-input-block">
+							<input type="text" name="name" value="{$list.name}" required lay-verify="required"
+							       placeholder="请输入标题" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">产品描述</label>
+						<div class="layui-input-block">
+							<input type="text" name="description" value="{$list.description}" placeholder="请输入描述"
+							       class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">跳转地址</label>
+						<div class="layui-input-block">
+							<input type="text" name="url" value="{$list.url}" placeholder="请输入地址"
+							       class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">缩略图</label>
+						<div class="layui-input-block">
+							<input type="text" name="img" value="{$list.img}" class="layui-input layui-input-inline"
+							       id="thumb">
+							<input type="file" name="file" class="layui-upload-file">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">状态</label>
+						<div class="layui-input-block">
+							<input type="radio" name="status" value="1" title="启用" {if condition="$list.status==1" }
+							       checked="checked" {/if}>
+							<input type="radio" name="status" value="0" title="禁用" {if condition="$list.status==0" }
+							       checked="checked" {/if}>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">排序</label>
+						<div class="layui-input-block">
+							<input type="text" name="sort" value="{$list.sort}" required lay-verify="required"
+							       class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<input type="hidden" name="id" value="{$list.id}">
+							<button class="layui-btn" lay-submit lay-filter="*">更新</button>
+							<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/ueditor/ueditor.config.js"></script>
+<script src="__JS__/ueditor/ueditor.all.min.js"></script>
+{/block}
+{block name="script"}
+<script>
+	$(function () {
+		var ue = UE.getEditor('content'),
+			uploadEditor = UE.getEditor('upload-photo-btn'),
+			photoListItem,
+			uploadImage;
+
+		uploadEditor.ready(function () {
+			uploadEditor.setDisabled();
+			uploadEditor.hide();
+			uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+				$.each(arg, function (index, item) {
+					photoListItem = '<div class="photo-list"><input type="text" name="photo[]" value="' + item.src + '" class="layui-input layui-input-inline">';
+					photoListItem += '<button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button></div>';
+
+					$('#photo-container').append(photoListItem).on('click', '.remove-photo-btn', function () {
+						$(this).parent('.photo-list').remove();
+					});
+				});
+			});
+		});
+
+		$('#upload-photo-btn').on('click', function () {
+			uploadImage = uploadEditor.getDialog("insertimage");
+			uploadImage.open();
+		});
+	});
+</script>
+{/block}

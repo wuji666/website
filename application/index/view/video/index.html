@@ -1,0 +1,84 @@
+{extend name='base' /}
+{block name='banner'}
+<div class="fullSlide fullSlide3" style="margin-top: 135px;">
+	<div class="bd">
+		<ul>
+			<li>
+				{foreach $banner as $v}
+				<img src="{$v.image}" alt=" ">
+				{/foreach}
+			</li>
+		</ul>
+	</div>
+	<div class="hd">
+		<ul>
+		</ul>
+	</div>
+	<a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a>
+</div>
+{/block}
+{block name='main'}
+<div class="solution_detail clearfix contact_list" style="margin-top:10px; padding-top:10px;">
+	<div class="s_d_con" style="margin-top:5px; padding-top:0px;">
+		<div class="s_d_left">
+			{foreach $list as $v}
+			<div class="contact_list_c clearfix">
+				<a href="{:url('/index/video/details', ['id' => $v.id])}" target="_blank">
+					<img src="https://www.fenrunbao.cn/res_help/img/tu_3.png"/>
+				</a>
+				<div class="info">
+					<h4>
+						<a href="{:url('/index/video/details', ['id' => $v.id])}" title="{$v.title}" target="_blank">{$v.title}</a>
+					</h4>
+					<p>
+						{$v.introduction}
+						<a href="{:url('/index/video/details', ['id' => $v.id])}" class="more" target="_blank"
+						   target="_blank">[阅读全文]</a></p>
+					<div class="bottom clearfix">
+						<div class="fr"></div>
+					</div>
+				</div>
+			</div>
+			{/foreach}
+			<div class="" style="padding-top: 10px;">
+				{$list|raw}
+			</div>
+		</div>
+		<div class="s_d_right">
+			<div class="right_c">
+				<a href="https://www.fenrunbao.cn/contactus.html" target="_blank" class="kefu-link"></a>
+				<div class="other">
+					<div class="line"></div>
+					<h4>分润宝系统</h4>
+					<div class="other_c">
+						<ul class="pro-list2">
+							<li><a href="#">星驿付分润系统</a></li>
+							<li><a href="#">激活返现系统</a></li>
+							<li><a href="#">信用卡积分兑换</a></li>
+							<li><a href="#">拉卡拉分润系统</a></li>
+							<li><a href="#">合伙人分润系统</a></li>
+							<li><a href="#">网申办卡系统</a></li>
+							<li><a href="#">分销订单系统</a></li>
+							<li><a href="#">积分商家联盟</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="other">
+					<div class="line"></div>
+					<h4>热门问题</h4>
+					<div class="other_c">
+						<ul class="pro-list">
+							{foreach $hot as $v}
+							<li>
+								<a href="{:url('/index/question/details', ['id' => $v.id])}" title="{$v.title}"
+								   target="_blank">{$v.title}</a>
+							</li>
+							{/foreach}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}

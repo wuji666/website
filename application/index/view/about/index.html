@@ -1,0 +1,14 @@
+{extend name='base' /}
+{block name='main'}
+<div class="main">
+	<div class="y_banner">
+		<a href="/"><img src="{$banner.image}" /></a>
+	</div>
+	<div>
+		{$content.content|raw}
+		<div class="y_btnBox">
+			<a href="{:url('/index/contact/index')}">申请加盟</a>
+		</div>
+	</div>
+</div>
+{/block}

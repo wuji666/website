@@ -1,0 +1,124 @@
+{extend name='base' /}
+{block name='banner'}
+<div class="fullSlide fullSlide3" style="margin-top: 135px;">
+	<div class="bd">
+		<div class="tempWrap" style="overflow: hidden; position: relative; width: auto;">
+			<ul style="width: 4320px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -1440px;">
+				{foreach $slide as $v}
+				<li class="clone" style="float: left; width: 1440px;">
+					<a target="{$v.target}" href="{$v.link}" title="1">
+						<img src="{$v.image}" alt="">
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+	<div class="hd">
+		<ul>
+			<li class="on">1</li>
+		</ul>
+	</div>
+	<a class="prev" href="javascript:void(0)" style="opacity: 0.39039; display: inline;"></a>
+	<a class="next" href="javascript:void(0)" style="opacity: 0.39039; display: inline;"></a>
+</div>
+<script type="text/javascript">
+	/*鼠标移过，左右按钮显示*/
+	jQuery(".fullSlide").hover(function () {
+		jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.4)
+	}, function () {
+		jQuery(this).find(".prev,.next").fadeOut()
+	});
+	jQuery(".fullSlide").slide({
+		titCell: ".hd ul",
+		mainCell: ".bd ul",
+		effect: "leftLoop",
+		vis: "auto",
+		autoPlay: true,
+		autoPage: true,
+		trigger: "click",
+		interTime: 5000
+	});
+</script>
+{/block}
+{block name='main'}
+<div class="wrap">
+	<div class="picList2">
+		<div class="body">
+			<ul class="clearfix">
+				{foreach $product_list as $v}
+				<li>
+					<a href="{$v.url}">
+						<div class="thumb">
+							<img src="{$v.img}" class="img1">
+							<img src="{$v.img}" class="img2">
+						</div>
+						<div class="desc">
+							<h3>{$v.name}</h3>
+							<p>{$v.description}</p>
+						</div>
+					</a>
+				</li>
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="news" style="padding-top: 0px; margin-top: 0px;">
+	<div class="wrap">
+		<div class="body clearfix" style="width: 102%;">
+			<div class="list">
+				<h3><a href="{:url('/index/question/index')}" class="more">更多&gt;&gt;</a>{$question.name}</h3>
+				<div class="latest_information">
+					<div class="img">
+						<a href="{:url('/index/question/index')}" target="_blank" title="">
+							<img src="{$question.thumb}" alt="" style="width: 100%; display: block;">
+						</a>
+					</div>
+					<ul>
+						{foreach $question->children as $v}
+						<li>
+							<a href="{:url('/index/question/details', ['id' => $v.id])}" title="{$v.title}">{$v.title}</a>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="list">
+				<h3><a href="{:url('/index/video/index')}" class="more">更多&gt;&gt;</a>{$video.name}</h3>
+				<div class="latest_information">
+					<div class="img">
+						<a href="{:url('/index/video/index')}" target="_blank" title="">
+							<img src="{$video.thumb}" alt="" style="width: 100%; display: block;">
+						</a>
+					</div>
+					<ul>
+						{foreach $video->children as $v}
+						<li>
+							<a href="{:url('/index/video/details', ['id' => $v.id])}" title="{$v.title}">{$v.title}</a>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			<div class="list">
+				<h3><a href="{:url('/index/manual/index')}" class="more">更多&gt;&gt;</a>{$manual.name}</h3>
+				<div class="latest_information">
+					<div class="img">
+						<a href="{:url('/index/manual/index')}" target="_blank" title="">
+							<img src="{$manual.thumb}" alt="" style="width: 100%; display: block;">
+						</a>
+					</div>
+					<ul>
+						{foreach $manual->children as $v}
+						<li>
+							<a href="{:url('/index/manual/index', ['id' => $v.id])}" title="{$v.name}">{$v.name}</a>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/block}
